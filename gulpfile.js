@@ -7,7 +7,7 @@ var jsFiles = ['*.js', 'src/**/*.js'];
 
 gulp.task('style', function() {
     return gulp.src(jsFiles)
-        .pipe(jscs())
+        // .pipe(jscs())  // JSCS is too annoying .....
         .pipe(jscs.reporter())
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish', {
