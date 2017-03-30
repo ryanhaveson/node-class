@@ -3,7 +3,7 @@ var adminRouter = express.Router()
 var mongodb = require('mongodb').MongoClient;
 
 
-var books = [ 
+var oldBooks = [ 
         {
             title: 'War and piece',
             genre: 'Historical Fiction',
@@ -44,37 +44,25 @@ var router = function(nav){
     .get(function(req, res) {
         
         var url = 'mongodb://localhost:27017/libraryApp';
-        mongodb.connect(url, function(err, db){ 
-            console.log(err);
-            res.send("Connected to Mongo");
-            db.close();
-        });
-        /*
-        
+     
         mongodb.connect(url, function(err, db){
-            if(err != null ){
-                console.log("Looks like we connected to mongodb");
-                //var collection = db.collection('books');
-                
-                if(collection === null) {
-                    console.log("I think we have a null collection");
-                } else {
-                    console.log("About to insert");
-                    collection.insertMany(books, function(err, results) {
-                        if(err) { console.log(err) } else {
-                            console.log(results);
-                        }
-                        db.close(); 
-                    });
-                }
-                
+            console.log("Looks like we connected to mongodb");
+            var collection = db.collection('books');
+
+            if(collection === null) {
+                console.log("I think we have a null collection");
             } else {
-                console.log(err);
+                console.log("About to insert");
+                collection.insertMany(oldBooks, function(err, results) {
+                    if(err) { console.log(err) } else {
+                        console.log(results);
+                    }
+                    res.send(results);
+                    db.close(); 
+                });
             }
             db.close(); 
         });
-        */
-        //res.send('Hello admin router');
 
     });
     return adminRouter;

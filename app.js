@@ -32,7 +32,8 @@ app.get('/books', function(req, res) {
     res.send('Hello books');
 });
 
-app.listen(process.env.PORT, function(err) {
-    console.log("running server on Cloud9 -> https://" + process.env.C9_HOSTNAME + ":" + process.env.PORT);
+var port = process.env.PORT | 3000;
+app.listen(port, function(err) {
+   // console.log("running server on Cloud9 -> https://" + process.env.C9_HOSTNAME + ":" + process.env.PORT);
 });
 
