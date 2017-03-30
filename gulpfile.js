@@ -28,11 +28,12 @@ gulp.task('inject', function() {
     var options = {
         bowerJson : require('./bower.json'),
         directory : './public/lib',
-        ignorePath: '../../public'
+        ignorePath: '../../public',
+        devDependencies : true
     };
     
     
-    return gulp.src('./src/views/*.html')
+    return gulp.src('./src/views/*.jade')
         .pipe(wiredep(options))
         .pipe(inject(injectSrc, injectOptions))
         .pipe(gulp.dest('./src/views'));
@@ -42,7 +43,7 @@ gulp.task('serve', ['style', 'inject'], function() {
        script: 'app.js',
        delayTime:1,
        env: {
-           'PORT': 3000
+           'PORT': process.env.PORT
        },
        watch: jsFiles
    }; 
