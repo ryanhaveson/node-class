@@ -8,13 +8,15 @@ var oldBooks = [
             title: 'War and piece',
             genre: 'Historical Fiction',
             author: 'Lev Nik',
+            bookId: 656,
             read: false
         },
     
         {
-            title: 'Other war and peace',
+            title: 'Les Miz',
             genre: 'Historical non fyiction',
             author: 'Leventon',
+            bookId : 24280,
             read: true
         },
     

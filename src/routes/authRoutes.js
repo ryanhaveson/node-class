@@ -19,7 +19,7 @@ var router = function() {
                 collection.insert(user, 
                     function(err, results) {
                         req.login(results.ops[0], function() {
-                            res.redirect('/auth/profile');
+                            res.redirect('/Books');
                         });  
                       
                      
@@ -30,7 +30,7 @@ var router = function() {
         .post(passport.authenticate('local', {
             failureRedirect: '/'
     }), function(req, res) {
-        res.redirect('/auth/profile');
+        res.redirect('/Books');
     });
     
     authRouter.route('/profile')
